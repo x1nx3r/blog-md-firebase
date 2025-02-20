@@ -1,9 +1,3 @@
----
-title: "The Meaning of Life: A Shakespearean Soliloquy"
-date: "2023-10-05"
-author: "William Shakespeare"
----
-
 # The Meaning of Life: A Shakespearean Soliloquy
 
 To be, or not to be, that is the question:
