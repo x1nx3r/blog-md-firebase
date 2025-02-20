@@ -5,12 +5,17 @@ import matter from "gray-matter";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 
+// Define GitHub repository details
+const owner = "x1nx3r"; // Replace with your GitHub username
+const repo = "blog-md-firebase"; // Replace with your repository name
+const directory = "src/posts"; // Directory containing markdown files
+
 // Initialize Firebase Admin SDK
 const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://your-project-id.firebaseio.com", // Replace with your Firebase project URL
+  databaseURL: "https://blog-db-thingies.firebaseio.com", // Replace with your Firebase project URL
 });
 
 const db = admin.firestore();
@@ -21,7 +26,7 @@ function extractMetadata(content, filename, downloadUrl) {
   const summary = content.split(/\s+/).slice(0, 20).join(" ") || filename;
   const metadata = {
     author: "Mega Nugraha", // Hardcoded author name
-    title: filename, // Use the filename as the title
+    title: filename.replace(".md", ""), // Use the filename as the title without the .md extension
     contentUrl: downloadUrl, // URL to the raw markdown file on GitHub
     published: true, // Hardcoded published status
     summary: summary, // Summary of the content
@@ -35,7 +40,7 @@ async function pushMetadataToFirebase(metadata) {
   const batch = db.batch(); // Create a batch to perform multiple writes as a single atomic operation
 
   metadata.forEach((data, index) => {
-    const docRef = db.collection("posts").doc(`post-${index}`); // Create a reference to a document in the "posts" collection
+    const docRef = db.collection("posts").doc(data.title); // Use the title as the document ID
     batch.set(docRef, data); // Add the set operation to the batch
   });
 
@@ -49,7 +54,7 @@ async function syncPosts() {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = dirname(__filename);
 
-    const postsDir = path.join(__dirname, "src", "posts"); // Path to the "src/posts" directory
+    const postsDir = path.join(__dirname, directory); // Path to the "src/posts" directory
     const files = fs
       .readdirSync(postsDir) // Read the contents of the directory
       .filter((file) => file.endsWith(".md")); // Filter for markdown files
