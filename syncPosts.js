@@ -9,6 +9,7 @@ import { dirname } from "path";
 const owner = "x1nx3r"; // Replace with your GitHub username
 const repo = "blog-md-firebase"; // Replace with your repository name
 const directory = "src/posts"; // Directory containing markdown files
+const branch = "refs/heads/main"; // Branch reference
 
 // Initialize Firebase Admin SDK
 const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
@@ -26,7 +27,7 @@ function extractMetadata(content, filename, downloadUrl) {
   const summary = content.split(/\s+/).slice(0, 20).join(" ") || filename;
   const metadata = {
     author: "Mega Nugraha", // Hardcoded author name
-    title: filename.replace(".md", ""), // Use the filename as the title without the .md extension
+    title: filename, // Use the filename as the title
     contentUrl: downloadUrl, // URL to the raw markdown file on GitHub
     published: true, // Hardcoded published status
     summary: summary, // Summary of the content
@@ -39,15 +40,10 @@ function extractMetadata(content, filename, downloadUrl) {
 async function pushMetadataToFirebase(metadata) {
   const batch = db.batch(); // Create a batch to perform multiple writes as a single atomic operation
 
-  for (const data of metadata) {
-    const docRef = db.collection("posts").doc(data.title); // Use the title as the document ID
-    const doc = await docRef.get();
-    if (doc.exists) {
-      batch.update(docRef, data); // Update the existing document
-    } else {
-      batch.set(docRef, data); // Create a new document
-    }
-  }
+  metadata.forEach((data, index) => {
+    const docRef = db.collection("posts").doc(`post-${index}`); // Create a reference to a document in the "posts" collection
+    batch.set(docRef, data); // Add the set operation to the batch
+  });
 
   await batch.commit(); // Commit the batch
 }
@@ -68,7 +64,7 @@ async function syncPosts() {
     const metadataPromises = files.map((file) => {
       const filePath = path.join(postsDir, file); // Path to the markdown file
       const content = fs.readFileSync(filePath, "utf8"); // Read the content of the file
-      const downloadUrl = `https://raw.githubusercontent.com/${owner}/${repo}/main/${directory}/${file}`; // Construct the download URL
+      const downloadUrl = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${directory}/${encodeURIComponent(file)}`; // Construct the download URL
       const metadata = extractMetadata(content, file, downloadUrl); // Extract metadata
       return metadata;
     });
