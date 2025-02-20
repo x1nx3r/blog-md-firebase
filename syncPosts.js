@@ -39,10 +39,15 @@ function extractMetadata(content, filename, downloadUrl) {
 async function pushMetadataToFirebase(metadata) {
   const batch = db.batch(); // Create a batch to perform multiple writes as a single atomic operation
 
-  metadata.forEach((data, index) => {
+  for (const data of metadata) {
     const docRef = db.collection("posts").doc(data.title); // Use the title as the document ID
-    batch.set(docRef, data); // Add the set operation to the batch
-  });
+    const doc = await docRef.get();
+    if (doc.exists) {
+      batch.update(docRef, data); // Update the existing document
+    } else {
+      batch.set(docRef, data); // Create a new document
+    }
+  }
 
   await batch.commit(); // Commit the batch
 }
