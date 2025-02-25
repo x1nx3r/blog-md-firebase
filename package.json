@@ -4,22 +4,25 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "dev": "pnpm --stream -r run dev",
+    "dev:frontend": "vite --config frontend/vite.config.js",
+    "dev:backend": "nodemon backend/src/index.js",
+    "build": "pnpm --stream -r run build"
   },
   "dependencies": {
     "@fontsource/iosevka": "^5.1.0",
     "@fontsource/iosevka-aile": "^5.1.0",
     "@tailwindcss/vite": "^4.0.7",
     "axios": "^1.7.9",
+    "concurrently": "^9.1.2",
     "dotenv": "^16.4.7",
+    "express": "^4.21.2",
     "firebase": "^11.3.1",
     "firebase-admin": "^13.1.0",
     "fs": "0.0.1-security",
     "github-markdown-css": "^5.8.1",
     "gray-matter": "^4.0.3",
+    "nodemon": "^3.1.9",
     "path": "^0.12.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -42,5 +45,10 @@
     "eslint-plugin-react-refresh": "^0.4.18",
     "globals": "^15.14.0",
     "vite": "^6.1.0"
-  }
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "author": "Your Name",
+  "license": "MIT"
 }
