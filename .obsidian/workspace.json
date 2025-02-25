@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/posts/LLMs and How it Made the Dumb Me Felt Like Genius.md",
+                "file": "src/posts/LLMs and How it Made the Dumb Me Felt Like a Genius.md",
                 "mode": "source",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "LLMs and How it Made the Dumb Me Felt Like Genius"
+              "title": "LLMs and How it Made the Dumb Me Felt Like a Genius"
             }
           }
         ]
@@ -169,6 +169,6 @@
   "lastOpenFiles": [
     "src/posts/The Meaning of Life.md",
     "Untitled.canvas",
-    "src/posts/LLMs and How it Made the Dumb Me Felt Like Genius.md"
+    "src/posts/LLMs and How it Made the Dumb Me Felt Like a Genius.md"
   ]
 }
