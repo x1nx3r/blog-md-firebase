@@ -7,7 +7,6 @@ import rehypeRaw from "rehype-raw"; // To render raw HTML
 import "./index.css"; // Import the CSS file
 import Header from "./components/Header";
 import SidebarBox from "./components/SidebarBox";
-import { getPostById } from "./utils/firebaseInit"; // Import the function to fetch post data
 
 export default function PostView() {
   const { id } = useParams(); // Get the id parameter from the URL
@@ -16,8 +15,16 @@ export default function PostView() {
   useEffect(() => {
     async function fetchMarkdown() {
       try {
-        const post = await getPostById(id); // Fetch the post data by id
-        const data = await pullMarkdown(post.contentUrl); // Fetch the markdown content from the contentUrl
+        // Fetch the post data by id from Vercel function
+        const response = await fetch(`/api/posts?id=${id}`);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch post: ${response.status}`);
+        }
+
+        const post = await response.json();
+
+        // Fetch the actual markdown content from the post's contentUrl
+        const data = await pullMarkdown(post.contentUrl);
         setMarkdown(data);
       } catch (error) {
         console.error("Error fetching markdown:", error);
