@@ -5,77 +5,76 @@ import matter from "gray-matter";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 
-// Define GitHub repository details
-const owner = "x1nx3r"; // Replace with your GitHub username
-const repo = "blog-md-firebase"; // Replace with your repository name
-const directory = "src/posts"; // Directory containing markdown files
-const branch = "refs/heads/main"; // Branch reference
+const owner = "x1nx3r";
+const repo = "blog-md-firebase";
+const directory = "src/posts";
+const branch = "main";
 
-// Initialize Firebase Admin SDK
 const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://blog-db-thingies.firebaseio.com", // Replace with your Firebase project URL
+  databaseURL: "https://blog-db-thingies.firebaseio.com",
 });
 
 const db = admin.firestore();
 
-// Function to extract metadata from markdown content
 function extractMetadata(content, filename, downloadUrl) {
   const { data } = matter(content);
   const summary = content.split(/\s+/).slice(0, 20).join(" ") || filename;
-  const metadata = {
-    author: "Mega Nugraha", // Hardcoded author name
-    title: filename, // Use the filename as the title
-    contentUrl: downloadUrl, // URL to the raw markdown file on GitHub
-    published: true, // Hardcoded published status
-    summary: summary, // Summary of the content
-    date: data.date || new Date().toISOString().split("T")[0], // Use the date from front matter or current date
+  return {
+    author: "Mega Nugraha",
+    title: filename,
+    contentUrl: downloadUrl,
+    published: true,
+    summary: summary,
+    date: data.date || new Date().toISOString().split("T")[0],
   };
-  return metadata;
 }
 
-// Function to push metadata to Firebase
-async function pushMetadataToFirebase(metadata) {
-  const batch = db.batch(); // Create a batch to perform multiple writes as a single atomic operation
-
-  metadata.forEach((data, index) => {
-    const docRef = db.collection("posts").doc(`post-${index}`); // Create a reference to a document in the "posts" collection
-    batch.set(docRef, data); // Add the set operation to the batch
-  });
-
-  await batch.commit(); // Commit the batch
-}
-
-// Main function to sync posts
 async function syncPosts() {
   try {
-    // Get the directory name of the current module
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = dirname(__filename);
+    const postsDir = path.join(__dirname, directory);
 
-    const postsDir = path.join(__dirname, directory); // Path to the "src/posts" directory
     const files = fs
-      .readdirSync(postsDir) // Read the contents of the directory
-      .filter((file) => file.endsWith(".md")); // Filter for markdown files
+      .readdirSync(postsDir)
+      .filter((file) => file.endsWith(".md"));
 
-    // Map over the files and create an array of promises to extract metadata
-    const metadataPromises = files.map((file) => {
-      const filePath = path.join(postsDir, file); // Path to the markdown file
-      const content = fs.readFileSync(filePath, "utf8"); // Read the content of the file
-      const downloadUrl = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${directory}/${encodeURIComponent(file)}`; // Construct the download URL
-      const metadata = extractMetadata(content, file, downloadUrl); // Extract metadata
-      return metadata;
+    const metadata = files.map((file) => {
+      const content = fs.readFileSync(path.join(postsDir, file), "utf8");
+      const downloadUrl = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${directory}/${encodeURIComponent(file)}`;
+      return {
+        id: path.parse(file).name, // Use filename (without extension) as document ID
+        ...extractMetadata(content, file, downloadUrl),
+      };
     });
 
-    const metadata = await Promise.all(metadataPromises); // Wait for all metadata extraction promises to resolve
-    await pushMetadataToFirebase(metadata); // Push the metadata to Firestore
-    console.log("Metadata successfully pushed to Firebase");
+    const batch = db.batch();
+    const repoDocIds = metadata.map((data) => data.id);
+
+    // Step 1: Add or update documents
+    metadata.forEach((data) => {
+      const docRef = db.collection("posts").doc(data.id);
+      const { id, ...rest } = data;
+      batch.set(docRef, rest, { merge: true });
+    });
+
+    // Step 2: Fetch all existing docs in Firestore and find orphans
+    const snapshot = await db.collection("posts").get();
+    snapshot.forEach((doc) => {
+      if (!repoDocIds.includes(doc.id)) {
+        console.log(`Deleting orphan post: ${doc.id}`);
+        batch.delete(doc.ref);
+      }
+    });
+
+    await batch.commit();
+    console.log("Two-way sync complete.");
   } catch (error) {
-    console.error("Error syncing posts:", error); // Log any errors that occur
+    console.error("Sync error:", error);
   }
 }
 
-// Run the syncPosts function
 syncPosts();
