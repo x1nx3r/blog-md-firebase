@@ -36,7 +36,7 @@ export default function PostView() {
         <div className="max-w-4xl min-w-3xl w-full flex flex-row justify-between items-start">
           <div className="max-w-4xl min-w-3xl w-full markdown-body">
             <Markdown
-              className=""
+              className="figtree-content"
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeRaw]}
             >

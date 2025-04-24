@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap");
+@import url("https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap");
 @import "tailwindcss";
 @import "@fontsource/iosevka";
 
@@ -38,8 +39,8 @@ body {
 
 /* Markdown styles */
 .markdown-body {
-    @apply text-macchiato-text bg-macchiato-mantle font-serif leading-relaxed p-5 rounded-sm;
-    font-family: "EB Garamond", serif;
+    @apply text-macchiato-text bg-macchiato-mantle leading-relaxed p-5 rounded-sm;
+    font-family: "Figtree", sans-serif;
 }
 
 .markdown-body h1,
@@ -49,7 +50,8 @@ body {
 .markdown-body h5,
 .markdown-body h6 {
     @apply text-macchiato-text mt-3 mb-6;
-    font-family: "EB Garamond", serif;
+    font-family: "Figtree", sans-serif;
+    font-weight: 600;
 }
 
 .markdown-body h1 {
@@ -78,12 +80,12 @@ body {
 
 .markdown-body p {
     @apply mb-4 mt-2 text-macchiato-subtext0;
-    font-family: "EB Garamond", serif;
+    font-family: "Figtree", sans-serif;
 }
 
 .markdown-body a {
     @apply text-blue-500 no-underline;
-    font-family: "EB Garamond", serif;
+    font-family: "Figtree", sans-serif;
 }
 
 .markdown-body a:hover {
@@ -91,31 +93,35 @@ body {
 }
 
 .markdown-body code {
-    @apply font-serif bg-macchiato-mantle text-macchiato-text px-1 py-0.5 rounded;
-    font-family: "EB Garamond", serif;
+    @apply bg-macchiato-mantle text-macchiato-text px-1 py-0.5 rounded;
+    font-family: "Iosevka", monospace; /* Keeping code as monospace */
 }
 
 .markdown-body pre {
     @apply bg-macchiato-mantle text-macchiato-subtext0 p-4 rounded-lg overflow-x-auto;
-    font-family: "EB Garamond", serif;
+    font-family: "Figtree", sans-serif;
+}
+
+.markdown-body pre code {
+    font-family: "Iosevka", monospace; /* Keeping code as monospace */
 }
 
 .markdown-body blockquote {
     @apply border-l-4 border-macchiato-crust pl-4 text-macchiato-subtext0 my-4;
-    font-family: "EB Garamond", serif;
+    font-family: "Figtree", sans-serif;
 }
 
 .markdown-body ul {
     @apply list-disc list-inside mx-4 mb-4;
-    font-family: "EB Garamond", serif;
+    font-family: "Figtree", sans-serif;
 }
 
 .markdown-body ol {
     @apply list-decimal list-inside mx-4 mb-4;
-    font-family: "EB Garamond", serif;
+    font-family: "Figtree", sans-serif;
 }
 
 .markdown-body li {
     @apply list-outside mx-4 mb-2;
-    font-family: "EB Garamond", serif;
+    font-family: "Figtree", sans-serif;
 }
