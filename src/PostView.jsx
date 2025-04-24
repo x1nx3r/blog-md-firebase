@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import pullMarkdown from "./utils/pullMarkdown";
 import Markdown from "react-markdown";
+import { getPostById } from "./utils/firebaseInit";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw"; // To render raw HTML
 import "./index.css"; // Import the CSS file
@@ -15,13 +16,7 @@ export default function PostView() {
   useEffect(() => {
     async function fetchMarkdown() {
       try {
-        // Fetch the post data by id from Vercel function
-        const response = await fetch(`/api/posts?id=${id}`);
-        if (!response.ok) {
-          throw new Error(`Failed to fetch post: ${response.status}`);
-        }
-
-        const post = await response.json();
+        const post = await getPostById(id);
 
         // Fetch the actual markdown content from the post's contentUrl
         const data = await pullMarkdown(post.contentUrl);

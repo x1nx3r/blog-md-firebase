@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import PostContainer from "./PostContainer";
+import { getPosts, getPostById, db } from "../utils/firebaseInit";
 
 export default function ContentBox() {
   const [posts, setPosts] = useState([]);
@@ -8,11 +9,7 @@ export default function ContentBox() {
   useEffect(() => {
     async function fetchPosts() {
       try {
-        const response = await fetch("/api/posts");
-        if (!response.ok) {
-          throw new Error(`Failed to fetch posts: ${response.status}`);
-        }
-        const postsList = await response.json();
+        const postsList = await getPosts(db);
         setPosts(postsList);
       } catch (error) {
         console.error("Error fetching posts:", error);
