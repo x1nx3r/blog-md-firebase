@@ -16,7 +16,7 @@ The more I relied on it, the more I realized that it didn’t help me learn the 
 
 ## The Stomach-Churning Revelation
 
-Nope, the revelation didn’t hit me during some dramatic midterm panic. Not even close. It hit me much, much later—sixth semester, to be exact. I was doing this pretty final project at Bangkit, the kind of project you actually wanna show off on your LinkedIn or portfolio or whatever. It had to be the project. Clean code, solid backend, good design, all that jazz.
+Nope, the revelation didn't hit me during some dramatic midterm panic. Not even close. It hit me much, much later—sixth semester, to be exact. I was doing this pretty final project at Bangkit, the kind of project you actually wanna show off on your LinkedIn or portfolio or whatever. It had to be the project. Clean code, solid backend, good design, all that jazz.
 
 I was designing the Firestore database schema. At first, things looked fine. Until I had to store a list of dynamic, ordered data. Like, data that can be inserted in between, deleted from the middle, reordered without burning everything to the ground. And guess what I did?
 
@@ -24,10 +24,26 @@ I used a damn array.
 
 An array.
 
-Like a full-on pleb who never heard of Linked Lists or node pointers or any of that. All those Data Structures lectures I skipped, all the times I told myself “I’ll learn it later with ChatGPT,” it all came back and smacked me across the face. Right then and there, while I was wrestling with Firestore’s limitations, trying to hack my way around missing indices and shuffling array elements manually like a caveman with a stick.
+Like a full-on pleb who never heard of Linked Lists or node pointers or any of that. All those Data Structures lectures I skipped, all the times I told myself "I'll learn it later with ChatGPT," it all came back and smacked me across the face. Right then and there, while I was wrestling with Firestore's limitations, trying to hack my way around missing indices and shuffling array elements manually like a caveman with a stick.
 
-And all I could think was: “If only I truly understood how Linked Lists work, I wouldn’t be stuck with this janky-ass workaround.”
+And all I could think was: "If only I truly understood how Linked Lists work, I wouldn't be stuck with this janky-ass workaround."
 
-The worst part? It wasn’t even about just understanding the concept. It was the fact that I never practiced it. Never internalized it. Never gave it the respect it deserved because, well, ChatGPT was always there to do the thinking for me. I let it think for me, not with me.
+The worst part? It wasn't even about just understanding the concept. It was the fact that I never practiced it. Never internalized it. Never gave it the respect it deserved because, well, ChatGPT was always there to do the thinking for me. I let it think for me, not with me.
 
-And so, there I was. Sixth semester, allegedly a “final project” tier student, still stuck in the same pitfall I dug myself into way back in second semester. Only this time, the pit was deeper, and there was no LLM rope long enough to pull me out.
+And so, there I was. Sixth semester, allegedly a "final project" tier student, still stuck in the same pitfall I dug myself into way back in second semester. Only this time, the pit was deeper, and there was no LLM rope long enough to pull me out.
+
+## Now What?
+
+Looking back, I can't help but laugh at how blindly I trusted shortcuts to carry me through my academic journey. I’d used ChatGPT like it was my personal cheat sheet, thinking I was outsmarting the system. But in reality, I was just setting myself up for failure in the long run. Sure, it worked for a while—when assignments were small, and exams were simple. But once the projects got bigger, the stakes higher, the holes in my understanding started to show.
+
+The project at Bangkit was the moment it all clicked (a bit too late, I might add). I realized that knowledge is not something you can just rent for a quick fix when you're in a pinch. It needs to be built, tested, and most importantly, practiced. I was left scrambling to patch up my weak foundations, wishing I had put in the work earlier.
+
+I also realized something else: learning isn’t about being perfect, it’s about doing the work. The act of struggling through a problem, even if it feels frustrating as hell, is what truly teaches you. That’s the stuff that sticks. The stuff that helps you build real solutions, not just copy-paste ones.
+
+From that point on, I made a promise to myself to not rely on shortcuts anymore—not unless I really understood why it worked, how it worked, and when to use it properly. I’ve started putting in the effort to understand things at a deeper level, even if it means stepping outside my comfort zone and doing the hard work. It’s the only way to avoid becoming that guy who’s just a walking pile of AI-generated answers but can’t actually solve problems in the real world.
+
+Yeah, maybe Linked Lists weren’t the sexiest thing to learn, but they were a lesson I needed. Firestore's schema design, and any other complex project I’ll tackle in the future, will be better because I decided to stop being lazy and learn the core concepts. I’ll be better for it, and hopefully, that will show in the projects I’ll take on in the future.
+
+So, if you’re reading this and you’re tempted to take the shortcut with LLMs, just remember: they can’t fill in the gaps in your knowledge. At the end of the day, you’ll still have to do the hard part—learning, applying, and failing until you get it right.
+
+And trust me, doing it the right way is far more rewarding than just breezing through it.
