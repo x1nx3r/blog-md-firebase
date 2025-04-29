@@ -6,24 +6,18 @@ I still recall the first time I used it I felt like having a personal holy grail
 ## "Eh.. Easy, I'll Just Had to Do it This Way, Do that That Way, and--Wait.. What The Fuck?"
 It was a Tuesday morning, I attended the first session of my Data Structures class in my second semester. Being the clueless, overconfident fuck that I was, I just slept through the whole lecture and didn't pay any single attention. *"Eh, I'll just learn this with ChatGPT later in the afternoon,"* I thought. Well, unsurprisingly, I didn't manage to do that. And just like that, my tuesday routine for the entire semester is set in stone. How did it go, You ask? What? Linked Lists? What are those? Wait--lemme ask ChatGPT about that real quick.
 
-## "Wait, I Swear I've Heard About This Before... Just, Like, Never Actually Learned It"
+## The ChatGPT Shortcut: A Double-Edged Sword
 
-Fast forward to midterm week, and I'm sitting there staring at my laptop screen like it's written in hieroglyphics. The assignment? Implement a balanced binary search tree. And there I was, frantically typing into ChatGPT: "how to make AVL tree java please urgent help." The code it spat out looked reasonable enough—variables named properly, nice comments explaining rotations, the whole nine yards. Copy, paste, minor tweaks so it doesn't look *too* obvious, and submit.
+The first time I tried to look up Linked Lists on ChatGPT, it felt like magic. I typed in a quick query, got back a perfectly structured explanation, and even some code examples. For a moment, I thought, "Wow, this is amazing! Why would anyone actually go through the trouble of learning this when ChatGPT can just summarize it for me?"
 
-The next week rolls around and the professor drops a bomb: "We'll be having a practical exam. No internet, no ChatGPT, just you and your brain against the compiler." That's when I felt it—that cold sweat rolling down my back, the realization that I couldn't tell a tree traversal from a linked list operation if my life depended on it.
+But then came the twist. ChatGPT, in all its glory, has a limited context and sometimes an odd sense of priority when answering. I mean, how the hell did I end up getting a full explanation of the concept of Linked Lists without knowing what a node is in the first place? Or how about that algorithm where I needed a good grasp on recursion but instead got a vague description of a "for loop"? Was this the power of LLMs, or was it a curse in disguise?
 
-## "I'm In Danger, But Like, For Real This Time"
+The more I relied on it, the more I realized that it didn’t help me learn the foundational concepts needed to tackle the bigger picture. All the shortcuts I took ended up adding more confusion than clarity, and it wasn’t until much later, when things started to feel like a blur of fragmented concepts, that I understood how screwed I really was.
 
-The night before the exam, I had this brilliant plan to cram an entire semester's worth of data structures into my head. *"How hard could it be? ChatGPT explained this stuff to me already, I just need to... remember it all."* Spoiler alert: turns out there's a reason why these courses are spread across months and not condensed into a single panic-fueled all-nighter.
+## The Stomach-Churning Revelation
 
-There I was at 3 AM, surrounded by energy drink cans, watching YouTube tutorials at 2x speed, while simultaneously having ChatGPT explain recursion to me for the fifth time. *"Wait, so the function calls itself? But then... when does it stop? Oh god, I'm too tired for this."*
+Fast forward to later that semester, the moment I hit my lowest. Data Structures midterm was coming up, and I thought, "Okay, time to actually learn this shit properly." I revisited the Linked List topic—this time, without ChatGPT. I grabbed my old textbook, went through a few tutorials, and found out I had barely retained anything from all the times I just asked AI to do my homework for me. It felt like I had skipped a whole chapter in my textbook, and now, I was playing catch-up with concepts that I should've learned weeks ago.
 
-## "The Reckoning: When ChatGPT Can't Save Your Sorry Ass"
+So, there I was, scrambling to make sense of all the things I thought I'd mastered. Trying to implement an algorithm that should've been simple, but was now just a tangled mess of lines of code that didn't make sense. How did I go from “mastering” data structures in my mind to failing miserably at applying them?
 
-Exam day. The lab was quiet except for the sound of keyboards clacking—well, most keyboards. Mine was suspiciously silent as I stared at the question: "Implement a depth-first search algorithm for a graph." My mind went completely blank. No ChatGPT to rescue me, no pre-written code to modify. Just me and the horrifying realization that I had built my entire academic identity on digital sand.
-
-I typed something—anything—just to look busy. `public void dfs(Node start) {// TODO: figure out what the fuck DFS actually is}`. I glanced around the room, watching my classmates type with purpose and direction while I was mentally drafting an email to my parents explaining why I might be changing my major to something less intellectually demanding, like Professional Napping.
-
-In that moment, I understood with crystal clarity that I'd played myself. All those times I'd smugly thought, *"I'm so smart for using AI to do my work,"* had led me straight to this moment of spectacular, undeniable incompetence.
-
-And honestly? I deserved every painful second of it.
+This is where I hit a turning point—one that would make me realize, the shortcut, while tempting, could only take me so far. The reality was that the theoretical knowledge I lacked was starting to show, and it was no longer something that ChatGPT could just fix in a flash.
