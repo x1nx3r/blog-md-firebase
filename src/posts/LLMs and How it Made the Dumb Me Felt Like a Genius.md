@@ -16,8 +16,18 @@ The more I relied on it, the more I realized that it didn’t help me learn the 
 
 ## The Stomach-Churning Revelation
 
-Fast forward to later that semester, the moment I hit my lowest. Data Structures midterm was coming up, and I thought, "Okay, time to actually learn this shit properly." I revisited the Linked List topic—this time, without ChatGPT. I grabbed my old textbook, went through a few tutorials, and found out I had barely retained anything from all the times I just asked AI to do my homework for me. It felt like I had skipped a whole chapter in my textbook, and now, I was playing catch-up with concepts that I should've learned weeks ago.
+Nope, the revelation didn’t hit me during some dramatic midterm panic. Not even close. It hit me much, much later—sixth semester, to be exact. I was doing this pretty final project at Bangkit, the kind of project you actually wanna show off on your LinkedIn or portfolio or whatever. It had to be the project. Clean code, solid backend, good design, all that jazz.
 
-So, there I was, scrambling to make sense of all the things I thought I'd mastered. Trying to implement an algorithm that should've been simple, but was now just a tangled mess of lines of code that didn't make sense. How did I go from “mastering” data structures in my mind to failing miserably at applying them?
+I was designing the Firestore database schema. At first, things looked fine. Until I had to store a list of dynamic, ordered data. Like, data that can be inserted in between, deleted from the middle, reordered without burning everything to the ground. And guess what I did?
 
-This is where I hit a turning point—one that would make me realize, the shortcut, while tempting, could only take me so far. The reality was that the theoretical knowledge I lacked was starting to show, and it was no longer something that ChatGPT could just fix in a flash.
+I used a damn array.
+
+An array.
+
+Like a full-on pleb who never heard of Linked Lists or node pointers or any of that. All those Data Structures lectures I skipped, all the times I told myself “I’ll learn it later with ChatGPT,” it all came back and smacked me across the face. Right then and there, while I was wrestling with Firestore’s limitations, trying to hack my way around missing indices and shuffling array elements manually like a caveman with a stick.
+
+And all I could think was: “If only I truly understood how Linked Lists work, I wouldn’t be stuck with this janky-ass workaround.”
+
+The worst part? It wasn’t even about just understanding the concept. It was the fact that I never practiced it. Never internalized it. Never gave it the respect it deserved because, well, ChatGPT was always there to do the thinking for me. I let it think for me, not with me.
+
+And so, there I was. Sixth semester, allegedly a “final project” tier student, still stuck in the same pitfall I dug myself into way back in second semester. Only this time, the pit was deeper, and there was no LLM rope long enough to pull me out.
